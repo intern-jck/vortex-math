@@ -1,0 +1,20 @@
+<tr>
+    <td width="10%">
+        <label for="modulus-text">Modulus:&nbsp;</label>
+    </td>
+
+    <td width="10%"><input type="text" id="modulus-text" name="modulus-text" value="30" class="shortTextBox"
+            onchange="setModulus(this.value, false);draw();"></td>
+
+    <td width="80%"><input id="modulus-slider" name="modulus-slider" type="range" value="30" class="w3range" min="3"
+            max="200" step="1" oninput="setModulus(this.value);draw();" width="100%"></td>
+
+</tr>
+
+<tr>
+    <td width="10%"><label for="multiplier-text">Multiplier:&nbsp;</label></td>
+    <td width="10%"><input type="text" id="multiplier-text" name="multiplier-text" value="8" class="shortTextBox"
+            onchange="setMultiplier(this.value, false);draw();"></td>
+    <td width="80%"><input id="multiplier-slider" name="multiplier-slider" type="range" value="8" class="w3range"
+            min="2" max="50" step="1" oninput="setMultiplier(this.value);draw();" width="100%"></td>
+</tr>
