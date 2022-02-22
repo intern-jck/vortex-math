@@ -42,13 +42,6 @@ function draw() {
     let radius = (svgWidth / 2) - 11;
     let center = svgWidth / 2;
 
-    // Use mm to download svg for laser cutting
-    // const pixelToMM = 0.26;
-    // let svgWidthMM = 400 * pixelToMM;
-    // let svgHeightMM = svgWidthMM;
-    // let radiusMM = (svgWidthMM / 2) - 10;
-    // let centerMM = svgWidthMM / 2;
-
     let modulus = getModulus();
     let multiplier = getMultiplier();
 
@@ -61,7 +54,7 @@ function draw() {
     }
 
     let svgArea = document.getElementById('svg-graph');
-    console.log(svgArea.children.length);
+    //console.log(svgArea.children.length);
     if (svgArea.children.length >= 1) {
         svgArea.removeChild(svgArea.children[0]);
     }
@@ -70,7 +63,7 @@ function draw() {
     // Add lines to svg
     drawSvgLines(center, radius, multiplier, modulus, svg);
     // Add svg to DOM
-    console.log(svg.children.length);
+    //console.log(svg.children.length);
     document.getElementById('svg-graph').appendChild(svg);
 
 }
@@ -132,3 +125,4 @@ function svgCircle(center, radius) {
     myCircle.setAttribute('fill', 'none');
     return myCircle;
 }
+
