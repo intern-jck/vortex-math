@@ -19,40 +19,48 @@
 </head>
 
 
-<body>
+<body onload="draw();">
+
     <div class="row flex-column m-4 justify-content-center">
 
-        <div id="svg-test" class="col-8 border border-4 border-dark">
-        </div>
-        <button type="button" class="btn btn-outline-primary btn-lg" onclick="buildSVG();">SVG</button>
-        <button type="button" class="btn btn-outline-primary btn-lg" onclick="downloadSVG();">DOWNLOAD</button>
-
-
-        <div class="col-auto mx-auto">
-            <canvas class="mx-auto" id="graph" width="600" height="600">
-            </canvas>
+        <div id="svg-graph" class="col-6 mx-auto border border-4 border-dark">
         </div>
 
-
-        <div class="col-auto mx-auto border border-dark">
-            <button type="button" class="btn btn-outline-primary btn-lg" onclick="draw();">DRAW</button>
-            <button type="button" class="btn btn-outline-primary btn-lg" onclick="clearDrawing();">CLEAR</button>
-
+        <!-- <button type="button" class="btn btn-outline-primary btn-lg" onclick="draw();">SVG</button> -->
+        <div class="col-auto mx-auto my-2">
+            <button type="button" class="btn btn-outline-primary btn-lg" onclick="downloadSVG();">DOWNLOAD</button>
         </div>
-        <div class="col-auto mx-auto border border-dark">
 
-            <label for="modulus-slider" class="form-label">Modulus</label>
-            <input type="text" class="form-control" id="modulus-text" placeholder="">
-            <input type="range" class="form-range" min="2" max="100" step="1.0" id="modulus-slider" value="2"
-                oninput="updateModulus();draw();">
-
-            <label for="multiplier-slider" class="form-label">Multiplier</label>
-            <input type="text" class="form-control" id="multiplier-text" placeholder="">
-            <input type="range" class="form-range" min="0" max="100" step="1.0" id="multiplier-slider" value="2"
-                oninput="updateMultiplier(); draw();">
-
+        <!-- <div class="col mx-auto my-2 border border-dark"> -->
+        <div class="row justify-content-center">
+            <div class="col-lg-1 col-sm-1">
+                <input type="text" class="form-control" id="modulus-text" placeholder="9" value="9"
+                    onchange="updateModulus(this.value);draw();">
+            </div>
+            <div class="col-lg-6 col-sm-4">
+                <label for="modulus-slider" class="form-label">Modulus</label>
+                <input type="range" class="form-range" min="2" max="100" step="1.0" id="modulus-slider" value="9"
+                    oninput="updateModulus(this.value);draw();">
+            </div>
         </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-1 col-sm-1">
+                <input type="text" class="form-control" id="multiplier-text" placeholder="2" value="2"
+                    onchange="updateMultiplier(this.value);draw();">
+
+            </div>
+            <div class="col-lg-6 col-sm-4">
+                <label for=" multiplier-slider" class="form-label">Multiplier</label>
+                <input type="range" class="form-range" min="0" max="100" step="1.0" id="multiplier-slider" value="2"
+                    oninput="updateMultiplier(this.value); draw();">
+            </div>
+        </div>
+
+
+        <!-- </div> -->
+
     </div>
+
 </body>
 
 </html>

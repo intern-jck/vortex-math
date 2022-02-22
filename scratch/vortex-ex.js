@@ -7,11 +7,13 @@ function mylinear(t, x1, y1, x2, y2) {
 colors = ["#4363d8", "#f58231", "#3cb44b", "#e6194b", "#eed008", "#46f0f0", "#911eb4", "#f032e6", "#88ee33", "#fabebe", "#008080", "#e6beff", "#9a6324", "#fffac8", "#800000", "#aaffc3", "#808000", "#000099", "#808080"]; // based on https://sashamaps.net/docs/resources/20-colors/
 
 $(document).ready(draw);
+
 function draw() {
     n = getModulus();
     m = getMultiplier();
     canvas = document.getElementById('thecanvas');
     context = canvas.getContext('2d');
+
     context.clearRect(0, 0, canvas.width, canvas.height);
 
     context.font = mylinear(n, 9, 30, 150, 8) + 'pt sans-serif';
@@ -144,6 +146,7 @@ function draw() {
         if (n == Math.round(n)) context.fillText(n, c, c - r); // always include
     }
 }
+
 function drawArrowhead(context, x1, y1, x2, y2, location, angle, size) {
     // location is between 0 and 1 (1 = tip at (x2,y2))
     // angle is measurement from main line to arrow line
@@ -167,7 +170,6 @@ function drawArrowhead(context, x1, y1, x2, y2, location, angle, size) {
     context.lineTo(xt, yt);
     context.lineTo(xt + size * Math.cos(a - angle / 2), yt + size * Math.sin(a - angle / 2));
 }
-
 function getModulus() {
     return document.getElementById('modulus-text').value;
 }
@@ -177,7 +179,6 @@ function setModulus(x, adjustSlider = true) {
     document.getElementById('modulus-text').value = x;
     document.getElementById('multiplier-slider').max = x;
 }
-
 function getMultiplier() {
     return document.getElementById('multiplier-text').value;
 }
@@ -186,8 +187,6 @@ function setMultiplier(x, adjustSlider = true) {
     if (adjustSlider) document.getElementById('multiplier-slider').value = x;
     document.getElementById('multiplier-text').value = x;
 }
-
-
 function getMaxModulus() {
     return parseInt(document.getElementById('modulus-slider').max);
 }
@@ -218,21 +217,18 @@ function getLineWidth() {
 function setLineWidth(x) {
     $('#linewidth-select').selectpicker('val', x);
 }
-
 function getArrowheadLocation() {
     return document.getElementById('arrowhead-select').value; // 0 is none
 }
 function setArrowheadLocation(x) {
     $('#arrowhead-select').selectpicker('val', x);
 }
-
 function getLabeling() {
     return parseInt(document.getElementById('labeling-select').value);
 }
 function setLabeling(x) {
     $('#labeling-select').selectpicker('val', x);
 }
-
 function getColoring() {
     return parseInt(document.getElementById('coloring-select').value);
 }
@@ -258,7 +254,6 @@ function setColoringWithChecks(x) {
     }
     setColoring(x);
 }
-
 function getFractional() {
     return parseInt(document.getElementById('fractional-select').value);
 }
@@ -279,7 +274,6 @@ function setFractionalWithChecks(x) {
         setFractional(1);
     }
 }
-
 function prepExample(n, m, c) {
     setMaxModulus(n > 200 ? (n > 1000 ? 10000 : 1000) : 200);
     setColoring(c);
