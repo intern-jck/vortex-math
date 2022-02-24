@@ -56,54 +56,51 @@
     </nav>
 
     <div class="container">
+        <div class="row flex-row justify-content-center">
 
-        <div class="row flex-column m-4 justify-content-center">
-            <h1 class="text-center my-2">Vortex Math Graph Maker</h1>
+            <h1 class="text-center my-2">Vortex Graph Maker</h1>
 
-            <div id="svg-graph" class="col-6 mx-auto border border-4 border-dark">
-            </div>
-
-            <h3 class="text-center fs-4 my-2 ">Click to download the svg file!</h3>
-            <h4 class="text-center fs-4 my-2 ">The file will have a diameter of about 100 mm.</h4>
-            <h4 class="text-center fs-4 my-2 ">Perfect for a laser cut coaster!</h4>
-            <!-- <button type="button" class="btn btn-outline-primary btn-lg" onclick="draw();">SVG</button> -->
-            <div class="col-auto mx-auto my-2 justify-content-center">
-                <button type="button" class="btn btn-outline-primary btn-lg" onclick="downloadSVG();">DOWNLOAD</button>
-            </div>
-
-            <!-- <div class="col mx-auto my-2 border border-dark"> -->
-            <div class="row justify-content-center">
-                <div class="col-lg-1 col-sm-1">
-                    <input type="text" class="form-control" id="modulus-text" placeholder="9" value="9"
-                        onchange="updateModulus(this.value);draw();">
-                </div>
-                <div class="col-lg-6 col-sm-4">
-                    <label for="modulus-slider" class="form-label">Modulus</label>
-                    <input type="range" class="form-range" min="2" max="100" step="1.0" id="modulus-slider" value="9"
-                        oninput="updateModulus(this.value);draw();">
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-1 col-sm-1">
-                    <input type="text" class="form-control" id="multiplier-text" placeholder="2" value="2"
-                        onchange="updateMultiplier(this.value);draw();">
-
-                </div>
-                <div class="col-lg-6 col-sm-4">
-                    <label for=" multiplier-slider" class="form-label">Multiplier</label>
-                    <input type="range" class="form-range" min="0" max="100" step="1.0" id="multiplier-slider" value="2"
-                        oninput="updateMultiplier(this.value); draw();">
+            <div class="col-8 col-s-6 col-md-4 col-lg-6 ">
+                <div id="svg-graph" class="border border-4 border-dark">
                 </div>
             </div>
 
+            <div class="col-sm-8 col-lg-6 border border-dark">
+                <label for="modulus-slider" class="form-label text-center">Modulus</label>
+                <div class="row border border-success">
+                    <div class="col-2">
+                        <input type="text" class="texwt-input w-100" id="modulus-text" placeholder="9" value="9"
+                            onchange="updateModulus(this.value); draw();">
+                    </div>
+                    <div class="col-8">
+                        <input type="range" class="form-range" min="2" max="100" step="1.0" id="modulus-slider"
+                            value="9" oninput="updateModulus(this.value); draw();">
+                    </div>
+                </div>
 
-            <!-- </div> -->
+                <label for="multiplier-slider" class="form-label text-center">Multiplier</label>
+                <div class="row border border-success">
+                    <div class="col-2">
+                        <input type="text" class="text-input w-100" id="multiplier-text" placeholder="2" value="2"
+                            onchange="updateMultiplier(this.value); draw();">
+                    </div>
+                    <div class="col-8">
+                        <input type="range" class="form-range" min="0" max="100" step="1.0" id="multiplier-slider"
+                            value="2" oninput="updateMultiplier(this.value); draw();">
+                    </div>
+                </div>
+
+                <div class="text-center my-4">
+                    <button type="button" class="btn btn-outline-primary btn-lg"
+                        onclick="downloadSVG();">DOWNLOAD</button>
+                    <h2 class="fs-4 my-2 ">File is 100mm in diameter and colored blue for engraving and black for
+                        cutting. </h2>
+                </div>
+            </div>
 
         </div>
 
-
     </div>
-
 
 </body>
 
