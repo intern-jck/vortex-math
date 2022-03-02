@@ -156,12 +156,14 @@ function downloadSVG() {
     let svg = document.getElementById('svg-graph');
     // get ellipse
     let outline = svg.getElementsByTagName('ellipse');
+    console.log(outline);
     // get lines
-    outline.setAttribute('stroke', 'black');
+    outline[0].setAttribute('stroke', 'black');
     let lines = svg.getElementsByTagName('line');
-    //console.log(lines.length);
-    for (let line in lines) {
-        line.setAttribute('stroke', 'blue');
+
+    console.log(lines);
+    for (let i = 0; i < lines.length; i++) {
+        lines[i].setAttribute('stroke', 'blue');
     }
     let svgFile = svg.innerHTML;
     let blob = new Blob([svgFile.toString()]);
