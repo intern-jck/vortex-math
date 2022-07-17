@@ -9,8 +9,8 @@ const centerX = 0;
 const centerY = 0;
 
 function clearDrawing() {
-    var canvas = document.getElementById('graph');
-    let ctx = canvas.getContext('2d');
+    const canvas = document.getElementById('graph');
+    const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -22,15 +22,11 @@ function getMultiplier() {
 }
 
 function updateModulus(val) {
-    // let modVal = document.getElementById('modulus-slider').value;
-    //document.getElementById("modulus-text").value = modVal;
     document.getElementById('modulus-slider').value = val;
     document.getElementById('modulus-text').value = val;
 }
 
 function updateMultiplier(val) {
-    //let multiplierVal = document.getElementById('multiplier-slider').value;
-    // document.getElementById("multiplier-text").value = multiplierVal;
     document.getElementById('multiplier-slider').value = val;
     document.getElementById('multiplier-text').value = val;
 }
@@ -38,6 +34,7 @@ function updateMultiplier(val) {
 function draw() {
     let svgWidth = 400;
     let svgHeight = svgWidth;
+
     // Diagram will be about 100 mm
     let radius = (svgWidth / 2) - 11;
     let center = svgWidth / 2;
@@ -68,12 +65,24 @@ function draw() {
 
 }
 
-// max color = radius
-// min color = 0
-
 //scale color of line based on length where length is some percentage of the color range?
 function remap(val, low1, high1, low2, high2) {
     return low2 + (high2 - low2) * (val - low1) / (high1 - low1);
+}
+
+
+// check thse params to see if they are needed
+function getLength(c, r, m, n) {
+    //console.log(alpha);
+    let x1 = c + r * Math.sin(i * 2 * Math.PI / n);
+    let y1 = c - r * Math.cos(i * 2 * Math.PI / n);
+    let x2 = c + r * Math.sin(m * i * 2 * Math.PI / n);
+    let y2 = c - r * Math.cos(m * i * 2 * Math.PI / n);
+
+    //console.log(x1, y1, x2, y2);
+    let line = svgLine(x1, y1, x2, y2);
+    let lineLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2).toFixed(2);
+    return lineLength;
 }
 
 function drawSvgLines(c, r, m, n, svg) {
@@ -82,30 +91,10 @@ function drawSvgLines(c, r, m, n, svg) {
         //console.log(alpha, i, (i * m));
 
         if (alpha != i) {
-
-            //console.log(alpha);
-            let x1 = c + r * Math.sin(i * 2 * Math.PI / n);
-            let y1 = c - r * Math.cos(i * 2 * Math.PI / n);
-            let x2 = c + r * Math.sin(m * i * 2 * Math.PI / n);
-            let y2 = c - r * Math.cos(m * i * 2 * Math.PI / n);
-
-            //console.log(x1, y1, x2, y2);
-            let line = svgLine(x1, y1, x2, y2);
-
-            let lineLength = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2).toFixed(2);
             let mappedLength = parseInt(remap(lineLength, 0, 2 * r, 0, n));
-
-            //let hexNumber = parseInt(remap(lineLength, 0, 2 * r, 0, 4096));
-
-            //let hexMod = hexNumber % 16;
-            //console.log("LINE VALS: ", lineLength, mappedLength, hexNumber, hexMod, hexMod.toString(16));
-
-            //console.log("LINE VALS: ", lineLength, mappedLength, hexColor);
-
             let lineColor = getLineColor('#0000FF', '#FF0000', 0, n, mappedLength);
             console.log("LINE VALS: ", lineLength, mappedLength, lineColor);
             line.setAttribute('stroke', lineColor);
-
             svg.appendChild(line);
         }
     }
