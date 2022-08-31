@@ -1,0 +1,60 @@
+body {
+  font-size: 100%;
+  font-family: monospace;
+}
+
+.navbar {
+  border: 4px solid black;
+  font-size: x-large;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar ul {
+  border: 2px solid green;
+  margin-left: auto;
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.nav-icon {
+  border: 2px solid green;
+  float: right;
+  margin-left: auto;
+}
+
+#svg-graph {
+  max-width: 40vw;
+}
+
+
+.text-input {
+  width: 8vw;
+}
+
+.form-range {
+  width: 60vw;
+}
+
+.iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 80%;
+  height: 80%;
+}
