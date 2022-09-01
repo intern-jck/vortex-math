@@ -18,26 +18,16 @@
 <body>
 
   <nav class="navbar" aria-label="Main Navbar">
-    <ul>
-      <li class="nav-link">
-        <a href="#">Vortex Math</a>
-      </li>
-      <li class="nav-link">
-        <a href="#about">About</a>
-      </li>
-      <li class="nav-link">
-        <a href="#contact">Contact</a>
-      </li>
-    </ul>
+    <a href="#about">About</a>
     <a class="nav-icon" href="https://github.com/intern-jck/vortex-math" target="_blank">
       <i class="fab fa-github fa-2x"></i>
     </a>
   </nav>
 
-  <h1 class="page-header">Vortex Graph Maker</h1>
 
   <!-- VORTEX GRAPH MAKER -->
   <section id="vortex-maker">
+    <h1 class="page-header">Vortex Graph Maker</h1>
 
     <div class="vortex-svg">
       <div id="svg-graph"></div>
@@ -74,14 +64,14 @@
 
   </section>
 
-  <section>
-    <h2 class="vortex-info">
+  <section id="vortex-info">
+    <h2>
       The colors of the lines represent their length.
       <br>Red is the longest and blue is the shortest
       <br>with yellows, greens and purples
       <br> being somewhere in between.
     </h2>
-    <h2 class="vortex-info">
+    <h2>
       Download the above graph as an SVG file for lasercutting.
       <br> The SVG is just about 100mm in diameter.
       <br> The inner lines are colored blue for engraving
@@ -91,14 +81,12 @@
       onclick="downloadSVG();">DOWNLOAD</button>
   </section>
 
-
-  <!-- <section id="about">
+  <section id="about">
     <h2>ABOUT</h2>
-    <h2 class="text-center my-4"> Watch the video below to understand the math behind the graph!</h2>
-    <div class="row">
+    <div class="vortex-video">
       <div class="iframe-container">
         <iframe
-          class="responsive-iframe mx-auto"
+          class="iframe-video"
           src="https://www.youtube.com/embed/6ZrO90AI0c8"
           title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -106,11 +94,13 @@
         </iframe>
       </div>
     </div>
+    <h3> Watch the video to understand the math behind the graph!</h3>
+    <h3>Check out the source code in the repo below!</h3>
+    <a href="https://github.com/intern-jck/vortex-math" target="_blank">
+      <i class="fab fa-github fa-4x"></i>
+    </a>
   </section>
 
-  <section id="contact">
-    <h2>CONTACT</h2>
-  </section> -->
 
 </body>
 
