@@ -10,92 +10,83 @@
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/cdcc65decb.js" crossorigin="anonymous"></script>
 
-  <!-- Bootstrap 5 CSS  -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-  <!-- Bootstrap 5 JavaScript Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-
-
-
   <!-- My Stuff -->
-  <link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="styles/index.css">
+  <script defer src="scripts/script.js"></script>
 </head>
-
 
 <body>
 
-  <nav class=" navbar navbar-dark bg-dark navbar-expand-lg" aria-label="Main Navbar">
-    <div class="container">
-      <a class="navbar-brand" href="#">Vortex Math</a>
-      <a href="https://github.com/intern-jck/vortex-math" target="_blank"><i class="fab fa-github fa-2x"></i></a>
-
-      <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#game-navbar"
-        aria-controls="game-navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="game-navbar">
-        <ul class="navbar-nav">
-        </ul>
-      </div> -->
-
-    </div>
+  <nav class="navbar" aria-label="Main Navbar">
+    <a href="#about">About</a>
+    <a class="nav-icon" href="https://github.com/intern-jck/vortex-math" target="_blank">
+      <i class="fab fa-github fa-2x"></i>
+    </a>
   </nav>
 
-  <div class="container-fluid">
 
-    <h1 class="text-center my-2">Vortex Graph Maker</h1>
+  <!-- VORTEX GRAPH MAKER -->
+  <section id="vortex-maker">
+    <h1 class="page-header">Vortex Graph Maker</h1>
 
-    <div class="row">
-      <div id="svg-graph" class="mx-auto border border-4 border-dark"></div>
+    <div class="vortex-svg">
+      <div id="svg-graph"></div>
     </div>
 
-
-    <h2 class="text-center">Modulus</h2>
-    <div class="row justify-content-center align-items-center">
-      <input type="text" class="text-input" id="modulus-text" placeholder="9" value="9"
-      onchange="updateModulus(this.value); draw();">
-      <input type="range" class="form-range" min="2" max="100" step="1.0" id="modulus-slider"
-        value="9" oninput="updateModulus(this.value); draw();">
+    <div class="vortex-interface">
+      <div class="vortex-control">
+        <label>
+          Modulus
+          <input
+            type="text" class="text-input" id="modulus-text"
+            placeholder="9" value="9"
+            onchange="updateModulus(this.value); draw();">
+        </label>
+        <input
+          type="range" class="form-range" id="modulus-slider"
+          min="2" max="100" step="1.0" value="9"
+          oninput="updateModulus(this.value); draw();">
+      </div>
+      <div class="vortex-control">
+        <label>
+          Multiplier
+          <input
+            type="text" class="text-input" id="multiplier-text"
+            placeholder="2" value="2"
+            onchange="updateMultiplier(this.value); draw();">
+        </label>
+        <input
+          type="range" class="form-range" id="multiplier-slider"
+          min="0" max="100" step="1.0"
+          value="2" oninput="updateMultiplier(this.value); draw();">
+      </div>
     </div>
 
-    <h2 class="text-center">Multiplier</h2>
-    <div class="row justify-content-center align-items-center">
-      <input type="text" class="text-input" id="multiplier-text" placeholder="2" value="2"
-      onchange="updateMultiplier(this.value); draw();">
-      <input type="range" class="form-range" min="0" max="100" step="1.0" id="multiplier-slider"
-      value="2" oninput="updateMultiplier(this.value); draw();">
-    </div>
+  </section>
 
-    <h2 class="fs-4 my-2 text-center">The colors of the lines represent their length.
+  <section id="vortex-info">
+    <h2>
+      The colors of the lines represent their length.
       <br>Red is the longest and blue is the shortest
       <br>with yellows, greens and purples
       <br> being somewhere in between.
     </h2>
+    <h2>
+      Download the above graph as an SVG file for lasercutting.
+      <br> The SVG is just about 100mm in diameter.
+      <br> The inner lines are colored blue for engraving
+      <br> and the circle's outline is colored black for cutting.
+    </h2>
+    <button class="vortex-download-btn"
+      onclick="downloadSVG();">DOWNLOAD</button>
+  </section>
 
-
-    <div class="row">
-      <div class="text-center my-4">
-        <button type="button" class="btn btn-outline-primary btn-lg"
-          onclick="downloadSVG();">DOWNLOAD</button>
-        <h2 class="fs-4 my-2 ">Download the above graph as an SVG file for lasercutting.
-          <br> The SVG is just about 100mm in diameter.
-          <br> The inner lines are colored blue for engraving
-          <br> and the circle's outline is colored black for cutting. </h2>
-      </div>
-    </div>
-
-    <h2 class="text-center my-4"> Watch the video below to understand the math behind the graph!</h2>
-
-    <div class="row">
+  <section id="about">
+    <h2>ABOUT</h2>
+    <div class="vortex-video">
       <div class="iframe-container">
         <iframe
-          class="responsive-iframe mx-auto"
+          class="iframe-video"
           src="https://www.youtube.com/embed/6ZrO90AI0c8"
           title="YouTube video player" frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -103,10 +94,37 @@
         </iframe>
       </div>
     </div>
+    <h3> Watch the video to understand the math behind the graph!</h3>
+    <h3>Check out the source code in the repo below!</h3>
+    <a href="https://github.com/intern-jck/vortex-math" target="_blank">
+      <i class="fab fa-github fa-4x"></i>
+    </a>
+  </section>
 
-  </div>
 
-<script src="script.js"></script>
 </body>
 
 </html>
+
+
+
+<!--
+<div class="vortex-download">
+  <h2 class="fs-4 my-2 text-center">The colors of the lines represent their length.
+    <br>Red is the longest and blue is the shortest
+    <br>with yellows, greens and purples
+    <br> being somewhere in between.
+  </h2>
+
+
+  <div class="row">
+    <div class="text-center my-4">
+      <button type="button" class="btn btn-outline-primary btn-lg"
+        onclick="downloadSVG();">DOWNLOAD</button>
+      <h2 class="fs-4 my-2 ">Download the above graph as an SVG file for lasercutting.
+        <br> The SVG is just about 100mm in diameter.
+        <br> The inner lines are colored blue for engraving
+        <br> and the circle's outline is colored black for cutting. </h2>
+    </div>
+  </div>
+</div> -->
