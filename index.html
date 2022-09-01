@@ -15,7 +15,6 @@
   <script defer src="scripts/script.js"></script>
 </head>
 
-
 <body>
 
   <nav class="navbar" aria-label="Main Navbar">
@@ -35,52 +34,67 @@
     </a>
   </nav>
 
-<!--
-  <div class="container-fluid">
+  <h1 class="page-header">Vortex Graph Maker</h1>
 
-    <h1 class="text-center my-2">Vortex Graph Maker</h1>
+  <!-- VORTEX GRAPH MAKER -->
+  <section id="vortex-maker">
 
-    <div class="row">
-      <div id="svg-graph" class="mx-auto border border-4 border-dark"></div>
+    <div class="vortex-svg">
+      <div id="svg-graph"></div>
     </div>
 
-
-    <h2 class="text-center">Modulus</h2>
-    <div class="row justify-content-center align-items-center">
-      <input type="text" class="text-input" id="modulus-text" placeholder="9" value="9"
-      onchange="updateModulus(this.value); draw();">
-      <input type="range" class="form-range" min="2" max="100" step="1.0" id="modulus-slider"
-        value="9" oninput="updateModulus(this.value); draw();">
+    <div class="vortex-interface">
+      <div class="vortex-control">
+        <label>
+          Modulus
+          <input
+            type="text" class="text-input" id="modulus-text"
+            placeholder="9" value="9"
+            onchange="updateModulus(this.value); draw();">
+        </label>
+        <input
+          type="range" class="form-range" id="modulus-slider"
+          min="2" max="100" step="1.0" value="9"
+          oninput="updateModulus(this.value); draw();">
+      </div>
+      <div class="vortex-control">
+        <label>
+          Multiplier
+          <input
+            type="text" class="text-input" id="multiplier-text"
+            placeholder="2" value="2"
+            onchange="updateMultiplier(this.value); draw();">
+        </label>
+        <input
+          type="range" class="form-range" id="multiplier-slider"
+          min="0" max="100" step="1.0"
+          value="2" oninput="updateMultiplier(this.value); draw();">
+      </div>
     </div>
 
-    <h2 class="text-center">Multiplier</h2>
-    <div class="row justify-content-center align-items-center">
-      <input type="text" class="text-input" id="multiplier-text" placeholder="2" value="2"
-      onchange="updateMultiplier(this.value); draw();">
-      <input type="range" class="form-range" min="0" max="100" step="1.0" id="multiplier-slider"
-      value="2" oninput="updateMultiplier(this.value); draw();">
-    </div>
+  </section>
 
-    <h2 class="fs-4 my-2 text-center">The colors of the lines represent their length.
+  <section>
+    <h2 class="vortex-info">
+      The colors of the lines represent their length.
       <br>Red is the longest and blue is the shortest
       <br>with yellows, greens and purples
       <br> being somewhere in between.
     </h2>
+    <h2 class="vortex-info">
+      Download the above graph as an SVG file for lasercutting.
+      <br> The SVG is just about 100mm in diameter.
+      <br> The inner lines are colored blue for engraving
+      <br> and the circle's outline is colored black for cutting.
+    </h2>
+    <button class="vortex-download-btn"
+      onclick="downloadSVG();">DOWNLOAD</button>
+  </section>
 
 
-    <div class="row">
-      <div class="text-center my-4">
-        <button type="button" class="btn btn-outline-primary btn-lg"
-          onclick="downloadSVG();">DOWNLOAD</button>
-        <h2 class="fs-4 my-2 ">Download the above graph as an SVG file for lasercutting.
-          <br> The SVG is just about 100mm in diameter.
-          <br> The inner lines are colored blue for engraving
-          <br> and the circle's outline is colored black for cutting. </h2>
-      </div>
-    </div>
-
+  <!-- <section id="about">
+    <h2>ABOUT</h2>
     <h2 class="text-center my-4"> Watch the video below to understand the math behind the graph!</h2>
-
     <div class="row">
       <div class="iframe-container">
         <iframe
@@ -92,9 +106,35 @@
         </iframe>
       </div>
     </div>
+  </section>
 
-  </div> -->
+  <section id="contact">
+    <h2>CONTACT</h2>
+  </section> -->
 
 </body>
 
 </html>
+
+
+
+<!--
+<div class="vortex-download">
+  <h2 class="fs-4 my-2 text-center">The colors of the lines represent their length.
+    <br>Red is the longest and blue is the shortest
+    <br>with yellows, greens and purples
+    <br> being somewhere in between.
+  </h2>
+
+
+  <div class="row">
+    <div class="text-center my-4">
+      <button type="button" class="btn btn-outline-primary btn-lg"
+        onclick="downloadSVG();">DOWNLOAD</button>
+      <h2 class="fs-4 my-2 ">Download the above graph as an SVG file for lasercutting.
+        <br> The SVG is just about 100mm in diameter.
+        <br> The inner lines are colored blue for engraving
+        <br> and the circle's outline is colored black for cutting. </h2>
+    </div>
+  </div>
+</div> -->

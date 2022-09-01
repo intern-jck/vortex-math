@@ -1,60 +1,183 @@
 body {
   font-size: 100%;
   font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
-
+.page-header {
+  margin-top: 4em;
+}
+/* NAVBAR */
 .navbar {
   border: 4px solid black;
-  font-size: x-large;
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: xx-large;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
-
 .navbar ul {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   margin-left: auto;
   list-style-type: none;
-  padding-left: 0;
+  padding: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 1em;
 }
-
 .nav-icon {
-  border: 2px solid green;
+  /* border: 2px solid green; */
   float: right;
   margin-left: auto;
 }
+/* GLOBALS */
+section {
+  border: 4px solid black;
+  width: 100%;
+  height: 80vh;
+}
+
+/* VORTEX GRAPH MAKER */
+#vortex-maker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+.vortex-svg {
+  border: 4px solid black;
+  width: 30vw;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #svg-graph {
-  max-width: 40vw;
-}
-
-
-.text-input {
-  width: 8vw;
-}
-
-.form-range {
-  width: 60vw;
-}
-
-.iframe-container {
-  position: relative;
-  overflow: hidden;
+  height: 100%;
   width: 100%;
-  padding-top: 56.25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.responsive-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 80%;
-  height: 80%;
+
+.vortex-interface {
+  /* border: 4px solid black; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2em;
+}
+
+.vortex-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vortex-control label, input {
+  font-size: x-large;
+}
+
+.vortex-control input[type="text"] {
+  width: 2em;
+}
+
+.vortex-control input[type="range"] {
+  width: 18em;
+}
+
+.vortex-info {
+  border: 2px solid blue;
+}
+
+.vortex-download-btn {
+  border: 2px solid blue;
+  width: fit-content;
+}
+
+@media screen and (orientation:landscape) and (max-width: 1024px){
+  .navbar {
+    font-size: large;
+  }
+
+  .page-header {
+    margin-top: 4em;
+  }
+
+  #vortex-maker {
+    flex-direction: row;
+    width: 100%;
+    height: 80vh;
+  }
+
+  .vortex-svg {
+    width: 80vw;
+    height: 100%;
+  }
+
+  #svg-graph {
+    height: 100%;
+    width: 100%;
+  }
+
+  .vortex-interface {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .vortex-controls {
+    flex-direction: column;
+  }
+
+  .vortex-control input[type="range"] {
+    width: 12em;
+  }
+}
+
+@media screen and (orientation:portrait) {
+  .navbar {
+    font-size: large;
+  }
+
+  #vortex-maker {
+    flex-direction: column;
+    width: 100%;
+    height: fit-content;
+  }
+
+  .vortex-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  #svg-graph {
+    height: 100%;
+    width: 100%;
+  }
+
+  .vortex-interface {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .vortex-controls {
+    flex-direction: column;
+  }
+
+  .vortex-control input[type="range"] {
+    width: 12em;
+  }
 }

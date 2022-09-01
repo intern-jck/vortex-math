@@ -42,6 +42,7 @@ class Vortex {
     let mySvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     mySvg.setAttribute('fill', 'none');
     mySvg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+    mySvg.setAttribute('id', 'svg-total')
     return mySvg;
   }
 
@@ -180,12 +181,12 @@ class Vortex {
     svg.appendChild(outline);
 
     // Add numbers to outside of outline
-    for(let i = 0; i < modulus; i++) {
-      let x1 = this.center + (this.radius + 5) * Math.sin(i * 2 * Math.PI / modulus);
-      let y1 = this.center - (this.radius + 5) * Math.cos(i * 2 * Math.PI / modulus);
-      let number = this.svgText(x1, y1, i);
-      svg.appendChild(number);
-    }
+    // for(let i = 0; i < modulus; i++) {
+    //   let x1 = this.center + (this.radius + 5) * Math.sin(i * 2 * Math.PI / modulus);
+    //   let y1 = this.center - (this.radius + 5) * Math.cos(i * 2 * Math.PI / modulus);
+    //   let number = this.svgText(x1, y1, i);
+    //   svg.appendChild(number);
+    // }
     // Create and add lines to SVG.
     let lines = this.createLines(this.center, this.radius, multiplier, modulus, svg);
     for(let i  = 0; i < lines.length; i++) {
