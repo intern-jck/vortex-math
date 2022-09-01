@@ -17,68 +17,84 @@
 
 <body>
 
-  <nav class="navbar" aria-label="Main Navbar">
-    <a href="#about">About</a>
+  <nav>
     <a class="nav-icon" href="https://github.com/intern-jck/vortex-math" target="_blank">
       <i class="fab fa-github fa-2x"></i>
     </a>
+    <a href="#vortex-maker">
+      Vortex Math
+    </a>
+    <a href="#about">About</a>
   </nav>
-
 
   <!-- VORTEX GRAPH MAKER -->
   <section id="vortex-maker">
-    <h1 class="page-header">Vortex Graph Maker</h1>
-
-    <div class="vortex-svg">
-      <div id="svg-graph"></div>
-    </div>
+    <h1>Vortex Graph Maker</h1>
 
     <div class="vortex-interface">
-      <div class="vortex-control">
-        <label>
-          Modulus
-          <input
-            type="text" class="text-input" id="modulus-text"
-            placeholder="9" value="9"
-            onchange="updateModulus(this.value); draw();">
-        </label>
-        <input
-          type="range" class="form-range" id="modulus-slider"
-          min="2" max="100" step="1.0" value="9"
-          oninput="updateModulus(this.value); draw();">
+
+      <div class="vortex-graph">
+        <div id="svg-container" class="svg-container"></div>
       </div>
-      <div class="vortex-control">
-        <label>
-          Multiplier
+
+      <div class="vortex-controls">
+        <div class="vortex-control">
+          <label>
+            Modulus
+            <input
+              type="number" class="text-input" id="modulus-text"
+              placeholder="9" value="9" min="0" max="99"
+              onchange="updateModulus(this.value); draw();">
+          </label>
           <input
-            type="text" class="text-input" id="multiplier-text"
-            placeholder="2" value="2"
-            onchange="updateMultiplier(this.value); draw();">
-        </label>
-        <input
-          type="range" class="form-range" id="multiplier-slider"
-          min="0" max="100" step="1.0"
-          value="2" oninput="updateMultiplier(this.value); draw();">
+            type="range" class="form-range" id="modulus-slider"
+            min="2" max="100" step="1.0" value="9"
+            oninput="updateModulus(this.value); draw();">
+        </div>
+        <div class="vortex-control">
+          <label>
+            Multiplier
+            <input
+              type="number" class="text-input" id="multiplier-text"
+              placeholder="9" value="2" min="0" max="99"
+              onchange="updateMultiplier(this.value); draw();">
+          </label>
+          <input
+            type="range" class="form-range" id="multiplier-slider"
+            min="0" max="100" step="1.0"
+            value="2" oninput="updateMultiplier(this.value); draw();">
+        </div>
       </div>
     </div>
 
-  </section>
 
-  <section id="vortex-info">
-    <h2>
-      The colors of the lines represent their length.
-      <br>Red is the longest and blue is the shortest
-      <br>with yellows, greens and purples
-      <br> being somewhere in between.
-    </h2>
-    <h2>
-      Download the above graph as an SVG file for lasercutting.
-      <br> The SVG is just about 100mm in diameter.
-      <br> The inner lines are colored blue for engraving
-      <br> and the circle's outline is colored black for cutting.
-    </h2>
-    <button class="vortex-download-btn"
-      onclick="downloadSVG();">DOWNLOAD</button>
+    <div class="vortex-info">
+      <p>
+        The math behind the graph is pretty simple.  Basically, we are starting with 1 and multipying by
+        our Multiplier, in the default case of this graph, 2.  Then we draw a line from our starting number
+        and the result.  So a line from 1 to 2.  Then we do the same for our result, 2, then repeat the process.
+        If our result is more than 1 digit long, we sum the numbers until we get to a digit less than our Modulus and
+        repeat the whole process again.  The result are the pretty graphs you see above.
+      </p>
+      <p>
+        What's really neat is this whole process is essentially modular arithmetic using the Modulus.
+        When each number is divided by our Modulus, the remainder is the same as the result of summing the digits of the
+        number being divided! For a much better explanation, see the video in the About section of this page.
+      </p>
+      <p>
+        The length of each line is represented by its color.
+        Red is the longest and blue is the shortest with
+        yellows, greens and purples being somewhere in between.
+      </p>
+      <p>
+        Download the above graph as an SVG file for lasercutting.
+        The SVG is just about 100mm in diameter.
+        The inner lines are colored blue for engraving
+        and the circle's outline is colored black for cutting.
+      </p>
+      <button class="vortex-download-btn"
+        onclick="downloadSVG();">DOWNLOAD</button>
+    </div>
   </section>
 
   <section id="about">
@@ -101,30 +117,8 @@
     </a>
   </section>
 
-
 </body>
 
 </html>
 
 
-
-<!--
-<div class="vortex-download">
-  <h2 class="fs-4 my-2 text-center">The colors of the lines represent their length.
-    <br>Red is the longest and blue is the shortest
-    <br>with yellows, greens and purples
-    <br> being somewhere in between.
-  </h2>
-
-
-  <div class="row">
-    <div class="text-center my-4">
-      <button type="button" class="btn btn-outline-primary btn-lg"
-        onclick="downloadSVG();">DOWNLOAD</button>
-      <h2 class="fs-4 my-2 ">Download the above graph as an SVG file for lasercutting.
-        <br> The SVG is just about 100mm in diameter.
-        <br> The inner lines are colored blue for engraving
-        <br> and the circle's outline is colored black for cutting. </h2>
-    </div>
-  </div>
-</div> -->

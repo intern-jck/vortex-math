@@ -8,6 +8,9 @@ class Vortex {
     this.svgWidth = 400;
     this.svgHeight = this.svgWidth;
 
+    // this.svgWidth = '100%';
+    // this.svgHeight = this.svgWidth;
+
     this.radius = (this.svgWidth /2) - 11; // 50.00625 mm
     this.diameter = this.radius * 2; // 100.0125 mm
     this.center = this.svgWidth / 2;
@@ -139,7 +142,7 @@ class Vortex {
   downloadSVG() {
 
     // Get the SVG container div.
-    let svgGraph = document.getElementById('svg-graph');
+    let svgGraph = document.getElementById('svg-container');
 
     // Get outline and change stroke to black.
     let outline = document.getElementById('svg-outline');
@@ -165,7 +168,7 @@ class Vortex {
   draw() {
 
     // Clear previous graph.
-    let svgGraph = document.getElementById('svg-graph');
+    let svgGraph = document.getElementById('svg-container');
     if (svgGraph.children.length >= 1) {
       svgGraph.removeChild(svgGraph.children[0]);
     }
@@ -192,8 +195,11 @@ class Vortex {
     for(let i  = 0; i < lines.length; i++) {
       svg.appendChild(lines[i]);
     }
+
+    // Give SVG a class name.
+    svg.setAttribute('class', 'vector-graph-svg');
     // Add SVG to div.
-    document.getElementById('svg-graph').appendChild(svg);
+    document.getElementById('svg-container').appendChild(svg);
   }
 
 }
