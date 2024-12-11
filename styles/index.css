@@ -1,18 +1,17 @@
-/* GLOBALS */
-body {
-  font-size: 100%;
-  font-family: monospace;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+html {
   box-sizing: border-box;
 }
 
-section {
-  border: 4px solid black;
-  padding-top: 10em;
-  width: 100%;
-  min-height: 90vh;
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 100%;
+  font-family: monospace;
+  margin: 0;
 }
 
 /* NAVBAR */
@@ -20,51 +19,58 @@ nav {
   border: 4px solid black;
   background-color: white;
   width: 100%;
-  height: 4em;
-  position: fixed;
-  top: 0;
-  left: 0;
-  font-size: xx-large;
-  box-sizing: border-box;
-
+  height: 4rem;
+  font-size: 2rem;
   display: flex;
-  flex-direction: row;
   align-items: center;
-  justify-content: space-around;
 }
 
-nav a {
-  margin: 1em;
-  text-align: center;
+.nav-icon {
+  margin-left: 2rem;
+  margin-right: 2rem;
   text-decoration: none;
   color: black;
 }
 
 /* VORTEX GRAPH MAKER */
-#vortex-maker {
+/* section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  border: 4px solid black;
+  padding-top: 10em;
+  width: 100%;
+  min-height: 90vh;
+} */
+
+.vortex-maker {
+  border: 4px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
-.vortex-interface {
-  /* border: 4px solid black; */
+
+/* .vortex-interface {
+  border: 4px solid black;
   padding: 1em;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 2em;
-}
+} */
 
 .vortex-graph {
-  border: 2px solid black;
-  width: 30vw;
-  height: 60vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  border: 4px solid black;
+  /* width: 30vw; */
+  height: 40rem;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 .svg-container {
@@ -78,35 +84,40 @@ nav a {
 }
 
 .vortex-controls {
-  width: 30vw;
-  height: 60vh;
+  border: 4px solid green;
+  /* width: 40rem; */
+  /* height: 60vh; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: center; */
   gap: 1em;
 }
 
 .vortex-control {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
-.vortex-control label, input {
-    font-size: large;
+.vortex-control label {
+  font-size: 1.6rem;
 }
 
 .vortex-control input[type="number"] {
-  width: 4em;
+  font-size: 2rem;
+  /* width: 6rem; */
+  text-align: end;
 }
 
 .vortex-control input[type="range"] {
-  width: 12em;
+  /* width: 18rem; */
+  transform: scale(2);
+  cursor: pointer;
 }
 
-.vortex-info {
+/* .vortex-info {
   width: 60vw;
   font-size: x-large;
   display: flex;
@@ -116,7 +127,7 @@ nav a {
 
 .vortex-info button {
   font-size: x-large;
-}
+} */
 
 
 /* ABOUT */
@@ -146,7 +157,7 @@ nav a {
   text-align: center;
 }
 
-@media screen and (orientation:landscape) and (max-width: 1024px){
+@media screen and (orientation:landscape) and (max-width: 1024px) {
   nav {
     font-size: large;
   }

@@ -12,69 +12,59 @@
 
   <!-- My Stuff -->
   <link rel="stylesheet" href="styles/index.css">
-  <script defer src="scripts/script.js"></script>
+  <script src="scripts/script.js" defer></script>
 </head>
 
 <body>
 
   <nav>
     <a class="nav-icon" href="https://github.com/intern-jck/vortex-math" target="_blank">
-      <i class="fab fa-github fa-2x"></i>
+      <i class="fab fa-github"></i>
     </a>
-    <a href="#vortex-maker">
-      Vortex Math
-    </a>
-    <a href="#about">About</a>
+    <span>Vortex Math</span>
+    <!-- <a href="#vortex-maker">
+    </a> -->
+    <!-- <a href="#about">About</a> -->
   </nav>
 
   <!-- VORTEX GRAPH MAKER -->
-  <section id="vortex-maker">
-    <h1>Vortex Graph Maker</h1>
-
-    <div class="vortex-interface">
-
-      <div class="vortex-graph">
-        <div id="svg-container" class="svg-container"></div>
-      </div>
-
-      <div class="vortex-controls">
-        <div class="vortex-control">
-          <label>
-            Modulus
-            <input
-              type="number" class="text-input" id="modulus-text"
-              placeholder="9" value="9" min="0" max="99"
-              onchange="updateModulus(this.value); draw();">
-          </label>
-          <input
-            type="range" class="form-range" id="modulus-slider"
-            min="2" max="100" step="1.0" value="9"
-            oninput="updateModulus(this.value); draw();">
-        </div>
-        <div class="vortex-control">
-          <label>
-            Multiplier
-            <input
-              type="number" class="text-input" id="multiplier-text"
-              placeholder="9" value="2" min="0" max="99"
-              onchange="updateMultiplier(this.value); draw();">
-          </label>
-          <input
-            type="range" class="form-range" id="multiplier-slider"
-            min="0" max="100" step="1.0"
-            value="2" oninput="updateMultiplier(this.value); draw();">
-        </div>
-      </div>
+  <!-- <h1 class="page-header">Vortex Maker</h1> -->
+  <div class="vortex-maker">
+    <!-- <div class="vortex-interface"> -->
+    <div class="vortex-graph">
+      <div id="svg-container" class="svg-container"></div>
     </div>
 
+    <div class="vortex-controls">
+      <div class="vortex-control">
+        <label for="modulus-text">Modulus</label>
+        <input type="number" id="modulus-number" value="9" min="1" max="99">
+        <!-- onchange="updateModulus(this.value); draw();"> -->
+        <input type="range" id="modulus-range" value="9" min="2" max="100" step="1.0">
+        <!-- oninput="updateModulus(this.value); draw();"> -->
+      </div>
+      <div class="vortex-control">
+        <label for="multiplier-text"> Multiplier </label>
+        <input type="number" id="multiplier-number" value="2" min="0" max="99">
+        <!-- onchange="updateMultiplier(this.value); draw();"> -->
+        <input type="range" id="multiplier-range" value="2" min="0" max="100" step="1.0">
+        <!-- oninput="updateMultiplier(this.value); draw();"> -->
+      </div>
+    </div>
+    <!-- </div> -->
+
+  </div>
+
+  <section id="about">
+    <h2>ABOUT</h2>
 
     <div class="vortex-info">
       <p>
-        The math behind the graph is pretty simple.  Basically, we are starting with 1 and multipying by
-        our Multiplier, in the default case of this graph, 2.  Then we draw a line from our starting number
-        and the result.  So a line from 1 to 2.  Then we do the same for our result, 2, then repeat the process.
+        The math behind the graph is pretty simple. Basically, we are starting with 1 and multipying by
+        our Multiplier, in the default case of this graph, 2. Then we draw a line from our starting number
+        and the result. So a line from 1 to 2. Then we do the same for our result, 2, then repeat the process.
         If our result is more than 1 digit long, we sum the numbers until we get to a digit less than our Modulus and
-        repeat the whole process again.  The result are the pretty graphs you see above.
+        repeat the whole process again. The result are the pretty graphs you see above.
       </p>
       <p>
         What's really neat is this whole process is essentially modular arithmetic using the Modulus.
@@ -92,19 +82,12 @@
         The inner lines are colored blue for engraving
         and the circle's outline is colored black for cutting.
       </p>
-      <button class="vortex-download-btn"
-        onclick="downloadSVG();">DOWNLOAD</button>
+      <button class="vortex-download-btn" onclick="downloadSVG();">DOWNLOAD</button>
     </div>
-  </section>
-
-  <section id="about">
-    <h2>ABOUT</h2>
     <div class="vortex-video">
       <div class="iframe-container">
-        <iframe
-          class="iframe-video"
-          src="https://www.youtube.com/embed/6ZrO90AI0c8"
-          title="YouTube video player" frameborder="0"
+        <iframe class="iframe-video" src="https://www.youtube.com/embed/6ZrO90AI0c8" title="YouTube video player"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
@@ -120,5 +103,3 @@
 </body>
 
 </html>
-
-

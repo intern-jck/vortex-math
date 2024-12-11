@@ -1,4 +1,3 @@
-
 class Vortex {
 
   constructor() {
@@ -11,7 +10,7 @@ class Vortex {
     // this.svgWidth = '100%';
     // this.svgHeight = this.svgWidth;
 
-    this.radius = (this.svgWidth /2) - 11; // 50.00625 mm
+    this.radius = (this.svgWidth / 2) - 11; // 50.00625 mm
     this.diameter = this.radius * 2; // 100.0125 mm
     this.center = this.svgWidth / 2;
   }
@@ -88,24 +87,22 @@ class Vortex {
     // Create 96 colors
     let colors = [];
 
-    for(let r = 0; r <= 255; r += 8) {
+    for (let r = 0; r <= 255; r += 8) {
       let rgbR = 'rgb(255,' + r + ', 0)';
       colors.push(rgbR);
     }
 
-    for(let g = 0; g <= 255; g += 8) {
+    for (let g = 0; g <= 255; g += 8) {
       let rgbG = 'rgb(0, 255, ' + g + ')';
       colors.push(rgbG);
     }
 
-    for(let b = 0; b <= 255; b += 8) {
+    for (let b = 0; b <= 255; b += 8) {
       let rgbR = 'rgb(' + b + ', 0, 255)';
       colors.push(rgbR);
     }
     return colors;
   }
-
-
 
   // Creates a array of svg lines based on inputs:
   // center, radius, mulitplier and modulus.
@@ -151,7 +148,7 @@ class Vortex {
     // Get each line and change stroke to blue.
     let lines = document.getElementsByClassName('svg-line');
     for (let i = 0; i < lines.length; i++) {
-        lines[i].setAttribute('stroke', 'blue');
+      lines[i].setAttribute('stroke', 'blue');
     }
 
     // Create a file to download from the SVG html,
@@ -192,7 +189,7 @@ class Vortex {
     // }
     // Create and add lines to SVG.
     let lines = this.createLines(this.center, this.radius, multiplier, modulus, svg);
-    for(let i  = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i++) {
       svg.appendChild(lines[i]);
     }
 
@@ -207,18 +204,18 @@ class Vortex {
 let myVortex = new Vortex();
 myVortex.draw();
 
-
-let updateModulus = function(value) {
+let updateModulus = function (value) {
   myVortex.updateModulus(value);
 }
 
-let updateMultiplier = function(value) {
+let updateMultiplier = function (value) {
   myVortex.updateMultiplier(value);
 }
 
-let downloadSVG = function() {
+let downloadSVG = function () {
   myVortex.downloadSVG();
 }
-let draw = function() {
+
+let draw = function () {
   myVortex.draw();
 }
