@@ -6,99 +6,39 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vortex Math</title>
-
-  <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/cdcc65decb.js" crossorigin="anonymous"></script>
-
-  <!-- My Stuff -->
   <link rel="stylesheet" href="styles/index.css">
   <script src="scripts/script.js" defer></script>
 </head>
 
 <body>
-
   <nav>
     <a class="nav-icon" href="https://github.com/intern-jck/vortex-math" target="_blank">
       <i class="fab fa-github"></i>
     </a>
     <span>Vortex Math</span>
-    <!-- <a href="#vortex-maker">
-    </a> -->
-    <!-- <a href="#about">About</a> -->
   </nav>
 
-  <!-- VORTEX GRAPH MAKER -->
-  <!-- <h1 class="page-header">Vortex Maker</h1> -->
-  <div class="vortex-maker">
-    <!-- <div class="vortex-interface"> -->
-    <div class="vortex-graph">
+  <div class="app">
+    <div class="graph">
       <div id="svg-container" class="svg-container"></div>
     </div>
 
-    <div class="vortex-controls">
-      <div class="vortex-control">
-        <label for="modulus-text">Modulus</label>
-        <input type="number" id="modulus-number" value="9" min="1" max="99">
-        <!-- onchange="updateModulus(this.value); draw();"> -->
-        <input type="range" id="modulus-range" value="9" min="2" max="100" step="1.0">
-        <!-- oninput="updateModulus(this.value); draw();"> -->
+    <div class="controls">
+      <div class="control">
+        <label for="modulus-number">Modulus</label>
+        <input type="number" id="modulus-number" value="9" min="2" max="99" onchange="updateModulus(this.value)">
+        <input type="range" id="modulus-range" value="9" min="2" max="100" step="1.0"
+          oninput="updateModulus(this.value)">
       </div>
-      <div class="vortex-control">
-        <label for="multiplier-text"> Multiplier </label>
-        <input type="number" id="multiplier-number" value="2" min="0" max="99">
-        <!-- onchange="updateMultiplier(this.value); draw();"> -->
-        <input type="range" id="multiplier-range" value="2" min="0" max="100" step="1.0">
-        <!-- oninput="updateMultiplier(this.value); draw();"> -->
+      <div class="control">
+        <label for="multiplier-number"> Multiplier </label>
+        <input type="number" id="multiplier-number" value="2" min="1" max="99" onchange="updateMultiplier(this.value)">
+        <input type="range" id="multiplier-range" value="2" min="0" max="100" step="1.0"
+          oninput="updateMultiplier(this.value)">
       </div>
     </div>
-    <!-- </div> -->
-
   </div>
-
-  <section id="about">
-    <h2>ABOUT</h2>
-
-    <div class="vortex-info">
-      <p>
-        The math behind the graph is pretty simple. Basically, we are starting with 1 and multipying by
-        our Multiplier, in the default case of this graph, 2. Then we draw a line from our starting number
-        and the result. So a line from 1 to 2. Then we do the same for our result, 2, then repeat the process.
-        If our result is more than 1 digit long, we sum the numbers until we get to a digit less than our Modulus and
-        repeat the whole process again. The result are the pretty graphs you see above.
-      </p>
-      <p>
-        What's really neat is this whole process is essentially modular arithmetic using the Modulus.
-        When each number is divided by our Modulus, the remainder is the same as the result of summing the digits of the
-        number being divided! For a much better explanation, see the video in the About section of this page.
-      </p>
-      <p>
-        The length of each line is represented by its color.
-        Red is the longest and blue is the shortest with
-        yellows, greens and purples being somewhere in between.
-      </p>
-      <p>
-        Download the above graph as an SVG file for lasercutting.
-        The SVG is just about 100mm in diameter.
-        The inner lines are colored blue for engraving
-        and the circle's outline is colored black for cutting.
-      </p>
-      <button class="vortex-download-btn" onclick="downloadSVG();">DOWNLOAD</button>
-    </div>
-    <div class="vortex-video">
-      <div class="iframe-container">
-        <iframe class="iframe-video" src="https://www.youtube.com/embed/6ZrO90AI0c8" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-    <h3> Watch the video to understand the math behind the graph!</h3>
-    <h3>Check out the source code in the repo below!</h3>
-    <a href="https://github.com/intern-jck/vortex-math" target="_blank">
-      <i class="fab fa-github fa-4x"></i>
-    </a>
-  </section>
 
 </body>
 

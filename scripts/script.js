@@ -1,3 +1,4 @@
+
 class Vortex {
 
   constructor() {
@@ -16,21 +17,21 @@ class Vortex {
   }
 
   getModulus() {
-    return document.getElementById('modulus-text').value;
+    return document.getElementById('modulus-number').value;
   }
 
   getMultiplier() {
-    return document.getElementById('multiplier-text').value;
+    return document.getElementById('multiplier-number').value;
   }
 
   updateModulus(val) {
-    document.getElementById('modulus-slider').value = val;
-    document.getElementById('modulus-text').value = val;
+    document.getElementById('modulus-range').value = val;
+    document.getElementById('modulus-number').value = val;
   }
 
   updateMultiplier(val) {
-    document.getElementById('multiplier-slider').value = val;
-    document.getElementById('multiplier-text').value = val;
+    document.getElementById('multiplier-range').value = val;
+    document.getElementById('multiplier-number').value = val;
   }
 
   remapInt(val, low1, high1, low2, high2) {
@@ -104,10 +105,14 @@ class Vortex {
     return colors;
   }
 
+
+
   // Creates a array of svg lines based on inputs:
   // center, radius, mulitplier and modulus.
   createLines(c, r, m, n) {
     let lines = [];
+    let colors = this.createColors();
+
     for (let i = 0; i < n; i++) {
       // Alpha is remainder after division.
       // It is also the digital root for base m
@@ -126,41 +131,45 @@ class Vortex {
         // Set color and add to svg...
         let lineLength = Math.floor(Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2).toFixed(2));
         let colorNumber = this.remapInt(lineLength, 0, this.diameter, 96, 0);
-        let colors = this.createColors();
-        console.log(colors[colorNumber]);
-        line.setAttribute('stroke', colors[colorNumber]);
+        // console.log(colors[colorNumber]);
+        // console.log(colorNumber)
+        // let max = 0xEEEEEE;
+        // let result = Math.round(max / colorNumber).toString(16);
+        const linecolor = `hsl(${lineLength * 2}, 100%, 50%)`; // Color based on length
 
+        // line.setAttribute('stroke', colors[colorNumber]);
+        line.setAttribute('stroke', linecolor);
         lines.push(line);
       }
     }
     return lines;
   }
 
-  downloadSVG() {
+  // downloadSVG() {
 
-    // Get the SVG container div.
-    let svgGraph = document.getElementById('svg-container');
+  //   // Get the SVG container div.
+  //   let svgGraph = document.getElementById('svg-container');
 
-    // Get outline and change stroke to black.
-    let outline = document.getElementById('svg-outline');
-    outline.setAttribute('stroke', 'black');
+  //   // Get outline and change stroke to black.
+  //   let outline = document.getElementById('svg-outline');
+  //   outline.setAttribute('stroke', 'black');
 
-    // Get each line and change stroke to blue.
-    let lines = document.getElementsByClassName('svg-line');
-    for (let i = 0; i < lines.length; i++) {
-      lines[i].setAttribute('stroke', 'blue');
-    }
+  //   // Get each line and change stroke to blue.
+  //   let lines = document.getElementsByClassName('svg-line');
+  //   for (let i = 0; i < lines.length; i++) {
+  //     lines[i].setAttribute('stroke', 'blue');
+  //   }
 
-    // Create a file to download from the SVG html,
-    // then download the file.
-    let svgFile = svgGraph.innerHTML;
-    let blob = new Blob([svgFile.toString()]);
-    let element = document.createElement("a");
-    element.download = "svg-coaster.svg";
-    element.href = window.URL.createObjectURL(blob);
-    element.click();
-    element.remove();
-  }
+  //   // Create a file to download from the SVG html,
+  //   // then download the file.
+  //   let svgFile = svgGraph.innerHTML;
+  //   let blob = new Blob([svgFile.toString()]);
+  //   let element = document.createElement("a");
+  //   element.download = "svg-coaster.svg";
+  //   element.href = window.URL.createObjectURL(blob);
+  //   element.click();
+  //   element.remove();
+  // }
 
   draw() {
 
@@ -202,20 +211,44 @@ class Vortex {
 }
 
 let myVortex = new Vortex();
-myVortex.draw();
 
-let updateModulus = function (value) {
+function updateModulus(value) {
   myVortex.updateModulus(value);
+  myVortex.draw();
 }
 
-let updateMultiplier = function (value) {
+function updateMultiplier(value) {
   myVortex.updateMultiplier(value);
+  myVortex.draw();
 }
 
-let downloadSVG = function () {
-  myVortex.downloadSVG();
+function downloadSVG() {
+  // myVortex.downloadSVG();
+
+  // Get the SVG container div.
+  let svgGraph = document.getElementById('svg-container');
+
+  // Get outline and change stroke to black.
+  let outline = document.getElementById('svg-outline');
+  outline.setAttribute('stroke', 'black');
+
+  // Get each line and change stroke to blue.
+  let lines = document.getElementsByClassName('svg-line');
+  for (let i = 0; i < lines.length; i++) {
+    lines[i].setAttribute('stroke', 'blue');
+  }
+
+  // Create a file to download from the SVG html,
+  // then download the file.
+  let svgFile = svgGraph.innerHTML;
+  let blob = new Blob([svgFile.toString()]);
+  let element = document.createElement("a");
+  element.download = "svg-coaster.svg";
+  element.href = window.URL.createObjectURL(blob);
+  element.click();
+  element.remove();
 }
 
-let draw = function () {
+window.onload = () => {
   myVortex.draw();
 }
